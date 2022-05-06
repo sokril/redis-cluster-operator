@@ -1,0 +1,48 @@
+apiVersion: redis.kun/v1alpha1
+kind: DistributedRedisCluster
+metadata:
+  annotations:
+    # if your operator run as cluster-scoped, add this annotations
+    redis.kun/scope: cluster-scoped
+  name: example-distributedrediscluster
+spec:
+  image: redis-redflag:6.0.9
+  masterSize: 3
+  clusterReplicas: 1
+  config:
+    protected-mode: "no"
+    activerehashing: "yes"
+    appendfsync: everysec
+    appendonly: "yes"
+    hash-max-ziplist-entries: "512"
+    hash-max-ziplist-value: "64"
+    hll-sparse-max-bytes: "3000"
+    list-compress-depth: "0"
+    maxmemory-policy: noeviction
+    maxmemory-samples: "5"
+    no-appendfsync-on-rewrite: "no"
+    notify-keyspace-events: ""
+    rdbcompression: "yes"
+    save: 900 1 300 10
+    set-max-intset-entries: "512"
+    slowlog-log-slower-than: "10000"
+    slowlog-max-len: "128"
+    stop-writes-on-bgsave-error: "yes"
+    tcp-keepalive: "0"
+    timeout: "0"
+    zset-max-ziplist-entries: "128"
+    zset-max-ziplist-value: "64"
+  passwordSecret:
+      name: mysecret
+  resources:
+    limits:
+      cpu: 200m
+      memory: 200Mi
+    requests:
+      cpu: 200m
+      memory: 100Mi
+  storage:
+    type: persistent-claim
+    size: 1Gi
+    class: sc-rbd-x5 
+    deleteClaim: false
