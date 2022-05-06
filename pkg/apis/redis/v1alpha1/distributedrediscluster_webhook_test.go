@@ -33,6 +33,7 @@ func TestDistributedRedisCluster_ValidateCreate(t *testing.T) {
 					Config:          nil,
 					Affinity:        nil,
 					NodeSelector:    nil,
+					HostNetwork:     false,
 					ToleRations:     nil,
 					SecurityContext: nil,
 					Annotations:     nil,

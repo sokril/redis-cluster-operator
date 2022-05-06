@@ -28,6 +28,7 @@ type DistributedRedisClusterSpec struct {
 	RequiredAntiAffinity 		bool                         `json:"requiredAntiAffinity,omitempty"`
 	Affinity             		*corev1.Affinity             `json:"affinity,omitempty"`
 	NodeSelector         		map[string]string            `json:"nodeSelector,omitempty"`
+	HostNetwork                     bool                         `json:"hostNetwork,omitempty"`
 	ToleRations          		[]corev1.Toleration          `json:"toleRations,omitempty"`
 	SecurityContext      		*corev1.PodSecurityContext   `json:"securityContext,omitempty"`
 	ContainerSecurityContext	*corev1.SecurityContext		 `json:"containerSecurityContext,omitempty"`

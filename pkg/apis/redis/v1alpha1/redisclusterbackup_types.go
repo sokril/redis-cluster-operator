@@ -46,7 +46,7 @@ type PodSpec struct {
 	// More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 	// +optional
 	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
-
+        HostNetwork  bool              `json:"hostNetwork,omitempty"`
 	// Compute Resources required by the sidecar container.
 	Resources corev1.ResourceRequirements `json:"resources,omitempty"`
 

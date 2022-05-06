@@ -169,6 +169,9 @@ func (in *DistributedRedisClusterSpec) DeepCopyInto(out *DistributedRedisCluster
 			(*out)[key] = val
 		}
 	}
+	if in.HostNetwork != false {
+                out.HostNetwork = true
+	}
 	if in.ToleRations != nil {
 		in, out := &in.ToleRations, &out.ToleRations
 		*out = make([]v1.Toleration, len(*in))
@@ -285,6 +288,9 @@ func (in *PodSpec) DeepCopyInto(out *PodSpec) {
 		for key, val := range *in {
 			(*out)[key] = val
 		}
+	}
+	if in.HostNetwork != false {
+		out.HostNetwork = true
 	}
 	in.Resources.DeepCopyInto(&out.Resources)
 	if in.Affinity != nil {

@@ -268,6 +268,7 @@ func (r *ReconcileRedisClusterBackup) getBackupJob(reqLogger logr.Logger, backup
 	}
 	if backup.Spec.PodSpec != nil {
 		job.Spec.Template.Spec.NodeSelector = backup.Spec.PodSpec.NodeSelector
+                job.Spec.Template.Spec.HostNetwork = backup.Spec.PodSpec.HostNetwork
 		job.Spec.Template.Spec.Affinity = backup.Spec.PodSpec.Affinity
 		job.Spec.Template.Spec.SchedulerName = backup.Spec.PodSpec.SchedulerName
 		job.Spec.Template.Spec.Tolerations = backup.Spec.PodSpec.Tolerations
